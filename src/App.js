@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import Axios from 'axios';
+import Header from './Components/Header';
+import CardsC from './Components/CardsCharacters/CardsCharacters';
 
-function App() {
+export default function App() {
+  const key = '$2a$10$ihRQAqy0y1ONyS48fg0oY.eTyRo8hwW5EXeqowk76wTbxGtyU2Y8G'
+  const [characters, setcharacter] = useState([])
+
+  const fetchData = async () => {
+    const response = await Axios.get(`https://www.potterapi.com/v1/houses?key=${key}`)
+    setcharacter(response.data)
+  }
+  
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Header/>
+    <CardsC/>    <CardsC/>
+
+
+    <CardsC/>
+    <CardsC/>
+    <CardsC/>
+    <CardsC/>
+
+
+
+      {console.log(characters)}
+    </>
   );
 }
-
-export default App;
