@@ -6,11 +6,11 @@ import CardsC from './Components/CardsCharacters/CardsCharacters';
 
 export default function App() {
   const key = '$2a$10$ihRQAqy0y1ONyS48fg0oY.eTyRo8hwW5EXeqowk76wTbxGtyU2Y8G'
-  const [characters, setcharacter] = useState([])
+  const [houses, sethouses] = useState([])
 
   const fetchData = async () => {
     const response = await Axios.get(`https://www.potterapi.com/v1/houses?key=${key}`)
-    setcharacter(response.data)
+    sethouses(response.data)
   }
   
   useEffect(() => {
@@ -22,17 +22,11 @@ export default function App() {
   return (
     <>
     <Header/>
-    <CardsC/>    <CardsC/>
-
-
-    <CardsC/>
-    <CardsC/>
-    <CardsC/>
-    <CardsC/>
-
-
-
-      {console.log(characters)}
+      <div className="container-fluid mt-2">
+        {houses.map((el,i) => {
+        return <CardsC houses={el}/>
+      })}
+      </div>
     </>
   );
 }

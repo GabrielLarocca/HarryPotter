@@ -1,25 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 
-export default function CardsC(){
+export default function CardsC(houses){
 
 return(
     <div className="col-md-4">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <div className="card">
+            <div className="card-body">
+            {console.log(houses)}
+                <h5 className="card-title text-center">{houses.houses.name}</h5>
             </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Vestibulum at eros</li>
+            <ul className="list-group list-group-flush">
+                <li className="list-group-item"><b>Mascot: </b>{houses.houses.mascot}</li>
+                <li className="list-group-item"><b>Colors: </b>{houses.houses.colors.join(' | ')}</li>
+                <li className="list-group-item"><b>Founder: </b>{houses.houses.founder}</li>
             </ul>
-            <div class="card-body">
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
+            <div className="card-body">
+                <a href="#" className="card-link">Card link</a>
+                <a href="#" className="card-link">Another link</a>
             </div>
         </div>
     </div>
-)
-}
+)}
